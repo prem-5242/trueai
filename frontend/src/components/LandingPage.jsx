@@ -7,10 +7,6 @@ export default function LandingPage() {
       {/* Hero Section */}
       <section className="flex-1 flex flex-col items-center justify-center py-24 px-6 text-center space-y-8 bg-background">
         <div className="space-y-4 max-w-3xl">
-          <div className="inline-flex items-center rounded-full border border-border bg-secondary/50 px-3 py-1 text-sm font-medium text-secondary-foreground">
-            <span className="flex h-2 w-2 rounded-full bg-green-500 mr-2 animate-pulse"></span>
-            AI Detection Engine v2.0 Live
-          </div>
           <h1 className="text-4xl md:text-6xl font-bold tracking-tighter sm:leading-[1.1]">
             Is it Real or AI? <br className="hidden md:block" />
             <span className="text-primary/80">Know the Truth Instantly.</span>
