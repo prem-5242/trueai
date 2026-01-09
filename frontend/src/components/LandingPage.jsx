@@ -1,67 +1,84 @@
 import { SignInButton } from "@clerk/clerk-react";
-import EastIcon from "@mui/icons-material/East";
+import { ArrowRight, Upload, Zap, FileCheck } from "lucide-react";
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-24 px-6 md:px-12 text-center bg-gradient-to-b from-background via-sidebar/10 to-background">
-        <div className="max-w-5xl mx-auto relative z-10">
-          <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
-            Detect AI Content in Seconds
+      <section className="flex-1 flex flex-col items-center justify-center py-24 px-6 text-center space-y-8 bg-background">
+        <div className="space-y-4 max-w-3xl">
+          <div className="inline-flex items-center rounded-full border border-border bg-secondary/50 px-3 py-1 text-sm font-medium text-secondary-foreground">
+            <span className="flex h-2 w-2 rounded-full bg-green-500 mr-2 animate-pulse"></span>
+            AI Detection Engine v2.0 Live
+          </div>
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tighter sm:leading-[1.1]">
+            Is it Real or AI? <br className="hidden md:block" />
+            <span className="text-primary/80">Know the Truth Instantly.</span>
           </h1>
-          <p className="text-xl md:text-2xl text-foreground/70 mb-10 max-w-3xl mx-auto">
-            Upload image, video, or audio (.mp3, .wav) files to instantly detect
-            whether they are AI generated or human made.
+          <p className="text-xl text-muted-foreground max-w-[600px] mx-auto leading-relaxed">
+            The professional tool to detect AI-generated audio, video, and
+            imagery. Secure, fast, and accurate analysis for everyone.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <SignInButton mode="modal">
-              <button className="px-8 py-4 rounded-xl text-lg font-bold bg-primary text-primary-foreground shadow-lg hover:shadow-xl hover:scale-105 hover:cursor-pointer transition-all duration-300 glow-animate flex items-center gap-2">
-                Start Free Detection
-                <EastIcon className="w-5 h-5" />
-              </button>
-            </SignInButton>
+        </div>
+
+        <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
+          <SignInButton mode="modal">
+            <button className="inline-flex h-12 items-center justify-center rounded-lg bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 hover:cursor-pointer">
+              Try It Free
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </button>
+          </SignInButton>
+        </div>
+
+        {/* Tech Stack / Trusted By simplified */}
+        <div className="pt-12">
+          <p className="text-sm text-muted-foreground mb-6">
+            Supported Formats
+          </p>
+          <div className="flex gap-8 justify-center grayscale opacity-70">
+            <span className="font-semibold">MP3</span>
+            <span className="font-semibold">WAV</span>
+            <span className="font-semibold">MP4</span>
+            <span className="font-semibold">JPG</span>
+            <span className="font-semibold">PNG</span>
           </div>
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-50" />
       </section>
 
-      {/* How It Works */}
-      <section className="py-20 px-6 md:px-12 bg-sidebar/10">
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-16">How It Works</h2>
-          <div className="grid md:grid-cols-3 gap-12">
-            {[
-              {
-                step: "1",
-                title: "Upload",
-                desc: "Drop your file.",
-              },
-              {
-                step: "2",
-                title: "Analyze",
-                desc: "AI scans content in <60 seconds.",
-              },
-              {
-                step: "3",
-                title: "Result",
-                desc: "Clear decision + confidence score.",
-              },
-            ].map((item, i) => (
-              <div key={i} className="relative">
-                <div className="text-6xl font-bold text-primary/20 mb-4">
-                  {item.step}
-                </div>
-                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                <p className="text-foreground/70">{item.desc}</p>
-                {i < 2 && (
-                  <div className="hidden md:block absolute top-1/2 -right-6 w-12 h-0.5 bg-primary/30 -translate-y-1/2" />
-                )}
-              </div>
-            ))}
+      {/* Feature Grid */}
+      <section className="py-24 bg-secondary/30 border-t border-border">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid md:grid-cols-3 gap-8">
+            <FeatureCard
+              icon={<Upload className="w-10 h-10" />}
+              title="Easy Upload"
+              desc="Drag & drop any media file. We support audio, video, and images up to 50MB."
+            />
+            <FeatureCard
+              icon={<Zap className="w-10 h-10" />}
+              title="Instant Analysis"
+              desc="Our advanced AI models process your file in seconds, not minutes."
+            />
+            <FeatureCard
+              icon={<FileCheck className="w-10 h-10" />}
+              title="Detailed Reports"
+              desc="Get a clear 'Real' or 'Fake' verdict with a confidence score and reasoning."
+            />
           </div>
         </div>
       </section>
+    </div>
+  );
+}
+
+function FeatureCard({ icon, title, desc }) {
+  return (
+    <div className="flex flex-col items-center text-center p-6 bg-card rounded-xl border border-border shadow-sm">
+      <div className="mb-4 p-3 bg-primary/5 rounded-full text-primary">
+        {icon}
+      </div>
+      <h3 className="text-xl font-bold mb-2">{title}</h3>
+      <p className="text-muted-foreground">{desc}</p>
     </div>
   );
 }
