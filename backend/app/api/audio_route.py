@@ -15,7 +15,7 @@ from app.utils.logger import logger
 
 router = APIRouter()
 
-MAX_FILE_SIZE = 50 * 1024 * 1024  # 50 MB in bytes
+MAX_FILE_SIZE = 50 * 1024 * 1024  # 50 MB
 
 @router.post("/analyze")
 async def analyze_audio(
